@@ -4,7 +4,7 @@ const validations= require("../validations/validation")
 const jwt= require("jsonwebtoken")
 const{isValidName,isValidPassword, isValidEmail}=validations
 
-const registerAdmin= function(req,res){
+const registerAdmin= async function(req,res){
   try{
          let data= req.body
          let{name,email,password,phone}=data
@@ -15,7 +15,7 @@ const registerAdmin= function(req,res){
          if(!name || !isValidName(name)){return res.status(400).send({status:false,message:"please provide correct name"})}
          if(!password || isValidPassword(password)){return res.status(400).send({status:false,message:"please provide correct password atleast 8 characters ,1 capital letter,1 special character,numbers"})}
          
-        const admin= adminModel.create(data)
+        const admin= await adminModel.create(data)
         return res.status(201).send({status:true,data:admin})
   }
   catch(error){
@@ -25,7 +25,7 @@ const registerAdmin= function(req,res){
 
 //=======================================================================
 
-const loginAdmin= function(req,res){
+const loginAdmin= async  function(req,res){
     try{
          let data= req.body
          let {email,password}=data
@@ -35,7 +35,7 @@ const loginAdmin= function(req,res){
          if(!email || !isValidEmail(email)){return res.status(400).send({status:false,message:"please provide correct email"})}
          if(!password || isValidPassword(password)){return res.status(400).send({status:false,message:"please provide correct password atleast 8 characters ,1 capital letter,1 special character,numbers"})}
         
-         let findAdmin= studentModel.findOne({email:email,password:password})
+         let findAdmin= await studentModel.findOne({email:email,password:password})
          if(!findAdmin){return res.status(400).send({status:false,message:"please provide correct credentials"})}
         
          let token= jwt.sign({adminId:findAdmin.id},"OnlineExam")
