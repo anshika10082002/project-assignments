@@ -8,4 +8,4 @@ const studentSchema= new mongoose.Schema({
 
 },{timestamps:true})
 
-module.exports= mongooe.model("Student",studentSchema)
+module.exports= mongoose.model("Student",studentSchema)

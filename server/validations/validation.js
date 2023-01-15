@@ -19,5 +19,6 @@ const isValidPhone = (Mobile) => {
   module.exports={isValidName,isValidPassword, isValidEmail,isValidPhone}
 
 
-  // "start": "node index.js",
+
+ 
     // "dev": "nodemon index.js"   

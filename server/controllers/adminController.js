@@ -41,8 +41,9 @@ const loginAdmin= function(req,res){
          let token= jwt.sign({adminId:findAdmin.id},"OnlineExam")
          res.status(200).send({status:true,data:token})
     }
+
     catch(error){
-        res.status(500).send({status:false,message:error.message})
+        return res.status(500).send({status:false,message:error.message})
     }
-}
+}  
 module.exports={registerAdmin,loginAdmin}

@@ -1,4 +1,3 @@
-
 const studentModel= require("../models/studentModel")
 const validations= require("../validations/validation")
 const jwt= require("jsonwebtoken")
