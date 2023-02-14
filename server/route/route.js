@@ -1,21 +1,16 @@
 const express= require("express")
 const router= express.Router()
-const adminController= require("../controllers/adminController")
-const studentController=require("../controllers/studentController")
-const examController= require("../controllers/examController")
+const toDoController= require("../controllers/toDoController")
 
-//==========================Api's============================================//
-router.post("/adminRegister",adminController.registerAdmin)
-router.post("/login",adminController.loginAdmin)
+//=============================API's=======================================//
 
+router.post("/create",toDoController.createTask)
 
-router.post("/questions",examController.createQuestions)
-//router.get("/getQuestions/:id",examController.getQuestions)
+router.get("/get",toDoController.getTask)
 
-router.post("/register",studentController.registerStudent)
-router.post("/login",studentController.loginStudent)
-//router.get("/questions",studentController.getQuestions)
+router.put("/update/:id",toDoController.updateTask)
 
+//router.delete("/delete/:id",toDoController.deleteTask)
 
 module.exports = router;
 
